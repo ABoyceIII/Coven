@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap");
+
+.Home {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    325deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(13, 24, 133, 1) 74%,
+    rgba(39, 24, 166, 1) 100%
+  );
+  color: white;
+
+  font-family: "Outfit", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+}
+.Home h2 {
+  font-size: 100pt;
+  text-align: center;
+  padding-top: 25vh;
+}
+
+.Home button {
+  -webkit-border-radius: 23;
+  -moz-border-radius: 23;
+  border-radius: 9px;
+  color: #000000;
+  font-size: 53px;
+  background: #ffffff;
+  padding: 3px 20px 10px 20px;
+  border: solid #000000 0px;
+  text-decoration: none;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+
+  width: 250px;
+  margin-top: 200px;
+  align-self: center;
+}
+
+.Home button:hover {
+  background: #f0f0f0;
+  text-decoration: none;
+  cursor: pointer;
+}
