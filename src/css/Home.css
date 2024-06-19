@@ -34,14 +34,13 @@
   text-decoration: none;
   font-family: "Outfit", sans-serif;
   font-weight: 700;
-  margin-left: 75px;
-  margin-right: 75px;
+  margin-top: 25px;
   align-self: center;
 }
 
 .Home .RedirectButtons {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 200px;
   justify-content: center;
 }
