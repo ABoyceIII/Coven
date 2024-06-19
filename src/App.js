@@ -4,6 +4,7 @@ import Home from "./pages/Initial/Home.js";
 import Login from "./pages/Initial/Login.js";
 import { useAuthentication } from "./services/authService.js";
 import { useEffect, useState } from "react";
+import CreateAccount from "./pages/Initial/CreateAccount.js";
 
 function App() {
   const user = useAuthentication();
@@ -21,6 +22,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="create" element={<CreateAccount />} />
         </Routes>
       </BrowserRouter>
     </div>

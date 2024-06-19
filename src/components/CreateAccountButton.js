@@ -5,6 +5,7 @@ Redirects the user to the account creation webpage
 */
 export function CreateAccountButton() {
   const redirect = async () => {
+    window.location.href = "/create";
     // try {
     //   const result = await signInWithPopup(auth, new GoogleAuthProvider());
     //   const user = result.user;
