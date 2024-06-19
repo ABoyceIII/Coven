@@ -1,0 +1,28 @@
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+/*
+Redirects the user to the login page
+*/
+export function LogInButton() {
+  const onSignIn = async () => {
+    // try {
+    //   const result = await signInWithPopup(auth, new GoogleAuthProvider());
+    //   const user = result.user;
+    //   let isExistingUser = await doesResidentExist(user.email);
+    //   ////console.log(user.email + " exists: " + isExistingUser);
+    //   if (isExistingUser) {
+    //     window.location.href = `/dashboard`;
+    //   } else {
+    //     window.location.href = "/welcome";
+    //   }
+    // } catch (error) {
+    //   console.error("Error signing in:", error.message);
+    // }
+  };
+
+  return (
+    <button onClick={() => onSignIn()} className="WelcomeButton">
+      sign in
+    </button>
+  );
+}

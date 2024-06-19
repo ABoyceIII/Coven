@@ -22,7 +22,7 @@
   padding-top: 25vh;
 }
 
-.Home button {
+.WelcomeButton {
   -webkit-border-radius: 23;
   -moz-border-radius: 23;
   border-radius: 9px;
@@ -34,10 +34,16 @@
   text-decoration: none;
   font-family: "Outfit", sans-serif;
   font-weight: 700;
-
-  width: 250px;
-  margin-top: 200px;
+  margin-left: 75px;
+  margin-right: 75px;
   align-self: center;
+}
+
+.Home .RedirectButtons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 200px;
+  justify-content: center;
 }
 
 .Home button:hover {
