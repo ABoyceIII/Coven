@@ -4,6 +4,10 @@ import Home from "./pages/Initial/Home.js";
 import Login from "./pages/Initial/Login.js";
 
 function App() {
+  const user = useAuthentication();
+  const [userResident, setUserResident] = useState();
+  const [environment, setEnvironment] = useState();
+
   return (
     <div className="App">
       <BrowserRouter>
