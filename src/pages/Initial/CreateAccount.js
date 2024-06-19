@@ -2,6 +2,7 @@ import { validatePassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../firebaseConfig";
 import { createAccount } from "../../services/authService";
+import { FirebaseError } from "firebase/app";
 
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
@@ -15,11 +16,23 @@ export default function CreateAccount() {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  /**
+   * Handles the create account button functionality.
+   * Tries to create a new Firebase account with the given fields.
+   * If account successfully created, creates new Resident with user data.
+   * If the user is creating a new Residence, creates a Residence.
+   * If user us joining Residence, fetches residence from Join Code.
+   * Connects Resident and Residence.
+   */
   const handleClick = async () => {
     try {
       await handleCreateAccount();
     } catch (error) {
-      console.log("Account creation error", error);
+      if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+        console.log("Email already in use.");
+      } else {
+        console.log("Account creation error", error);
+      }
     }
   };
 
