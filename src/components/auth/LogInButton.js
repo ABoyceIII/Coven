@@ -1,7 +1,21 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import signInEmail from "../../services/authService";
+export function LogInButton(props) {
+  const handleLogin = async () => {
+    try {
+      const user = signInEmail(props.email, props.password);
 
-export function LogInButton() {
-  const redirect = async () => {
+      //If we have successfully retrieved a user from the signInEmail method
+      if (user) {
+        //assign user value to higher level
+
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      //TODO: Report error on screen to user
+      console.log("Error signing in:", error.message);
+    }
+
     // try {
     //   const result = await signInWithPopup(auth, new GoogleAuthProvider());
     //   const user = result.user;
@@ -18,7 +32,7 @@ export function LogInButton() {
   };
 
   return (
-    <button onClick={() => redirect()} className="WelcomeButton">
+    <button onClick={() => handleLogin()} className="WelcomeButton">
       login
     </button>
   );

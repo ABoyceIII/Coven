@@ -1,5 +1,5 @@
 /*
- * The login page. User gives a username and a password. If an account exists, redirects user to dashboard.
+ * The login page. User gives a email and a password. If an account exists, redirects user to dashboard.
  * Otherwise, tells user to try again or create an account.
  */
 
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { LogInButton } from "../../components/auth/LogInButton";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
@@ -15,10 +15,10 @@ export default function Login() {
       <h2 className="LoginInstructions">enter your login information below</h2>
       <input
         type="text"
-        value={username}
-        placeholder="username"
+        value={email}
+        placeholder="email"
         onChange={(event) => {
-          setUsername(event.target.value);
+          setEmail(event.target.value);
         }}
       />
 
@@ -30,7 +30,7 @@ export default function Login() {
           setPassword(event.target.value);
         }}
       />
-      <LogInButton />
+      <LogInButton email={email} password={password} />
     </div>
   );
 }
