@@ -1,4 +1,8 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useState, useEffect } from "react";
 
@@ -31,4 +35,18 @@ export function useAuthentication() {
     });
   }, []);
   return user;
+}
+
+/**
+ * Creates a new account with the given email and password
+ * @param {*} email
+ * @param {*} password
+ */
+export async function createAccount(email, password) {
+  var userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+  var user = userCredential.user;
 }

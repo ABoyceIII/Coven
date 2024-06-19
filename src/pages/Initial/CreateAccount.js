@@ -1,6 +1,7 @@
 import { validatePassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../firebaseConfig";
+import { createAccount } from "../../services/authService";
 
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
@@ -15,28 +16,58 @@ export default function CreateAccount() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleClick = async () => {
-    if (await validateFields()) {
-      //Create account
+    try {
+      await handleCreateAccount();
+    } catch (error) {
+      console.log("Account creation error", error);
     }
   };
 
+  /**
+   * Tries to create a new account with the email and password if all fields are valid.
+   * Throws error if one occurs during account creation.
+   */
+  const handleCreateAccount = async () => {
+    if (await validateFields()) {
+      try {
+        await createAccount(email, password);
+      } catch (error) {
+        throw error;
+      }
+    } else {
+      console.log("Fields not valid");
+    }
+  };
+
+  /**
+   * Checks each of the fields for account creation. Returns whether or not they are all valid.
+   * If a field is invalid, invalidity is reflected in errorMessage
+   * @returns true if all fields are valid; else, false
+   */
   const validateFields = async () => {
     //TODO: Create doesEmailExist method
     // if (await doesEmailExist(email)) {
     //   setErrorMessage("An account already exists with this email.");
     // }
+    var areFieldsValid = true;
     if (password.length < 8) {
       //Look into validatePassword method
       setErrorMessage("Password must be 8 characters or greater.");
+      areFieldsValid = false;
     }
-    if (fullName.length > 20 || fullName.length < 4) {
-      setErrorMessage("Full Name must be between 4 and 20 characters.");
+    if (fullName.length > 25 || fullName.length < 4) {
+      setErrorMessage("Full Name must be between 4 and 25 characters.");
+      areFieldsValid = false;
     }
-    if (displayName.length > 10 || fullName.length < 4) {
+    if (displayName.length > 10 || displayName.length < 4) {
       setErrorMessage("Display name must be between 2 and 10 characters.");
+      areFieldsValid = false;
     }
-
-    return errorMessage == "";
+    if (areFieldsValid) {
+      setErrorMessage("");
+    }
+    console.log(errorMessage);
+    return areFieldsValid;
   };
 
   return (
@@ -74,7 +105,7 @@ export default function CreateAccount() {
       <input
         type="text"
         placeholder="Full Name"
-        onchange={(event) => {
+        onChange={(event) => {
           setFullName(event.target.value);
         }}
       />
