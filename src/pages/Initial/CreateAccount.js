@@ -14,28 +14,29 @@ export default function CreateAccount() {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleClick = () => {
-    //     if (await validateFields()) {
-    //       //Create account
-    //     }
-    //   };
-    //   const validateFields = async () => {
-    //     //TODO: Create doesEmailExist method
-    //     // if (await doesEmailExist(email)) {
-    //     //   setErrorMessage("An account already exists with this email.");
-    //     // }
-    //     //TODO: Research validatePassword method
-    //     if (password.length < 8) {
-    //       //Look into validatePassword method
-    //       setErrorMessage("Password must be 8 characters or greater.");
-    //     }
-    //     if (fullName.length > 20 || fullName.length < 4) {
-    //       setErrorMessage("Full Name must be between 4 and 20 characters.");
-    //     }
-    //     if (displayName.length > 10 || fullName.length < 4) {
-    //       setErrorMessage("Display name must be between 2 and 10 characters.");
-    //     }
-    //     return errorMessage == "";
+  const handleClick = async () => {
+    if (await validateFields()) {
+      //Create account
+    }
+  };
+
+  const validateFields = async () => {
+    //TODO: Create doesEmailExist method
+    // if (await doesEmailExist(email)) {
+    //   setErrorMessage("An account already exists with this email.");
+    // }
+    if (password.length < 8) {
+      //Look into validatePassword method
+      setErrorMessage("Password must be 8 characters or greater.");
+    }
+    if (fullName.length > 20 || fullName.length < 4) {
+      setErrorMessage("Full Name must be between 4 and 20 characters.");
+    }
+    if (displayName.length > 10 || fullName.length < 4) {
+      setErrorMessage("Display name must be between 2 and 10 characters.");
+    }
+
+    return errorMessage == "";
   };
 
   return (
@@ -112,7 +113,7 @@ export default function CreateAccount() {
       ) : (
         <h2 />
       )}
-      <button onClick={handleClick()}>create account</button>
+      <button onClick={() => handleClick()}>create account</button>
     </div>
   );
 }
