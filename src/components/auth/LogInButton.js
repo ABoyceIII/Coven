@@ -1,10 +1,7 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-/*
-Redirects the user to the login page
-*/
 export function LogInButton() {
-  const onSignIn = async () => {
+  const redirect = async () => {
     // try {
     //   const result = await signInWithPopup(auth, new GoogleAuthProvider());
     //   const user = result.user;
@@ -21,8 +18,8 @@ export function LogInButton() {
   };
 
   return (
-    <button onClick={() => onSignIn()} className="WelcomeButton">
-      sign in
+    <button onClick={() => redirect()} className="WelcomeButton">
+      login
     </button>
   );
 }
