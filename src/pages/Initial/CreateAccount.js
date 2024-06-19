@@ -49,12 +49,14 @@ export default function CreateAccount() {
         <input
           type="text"
           placeholder="Join Code"
+          value={response}
           onChange={(event) => setResponse(event.target.value)}
         />
       ) : isCreating ? (
         <input
           type="text"
           placeholder="Residence Name"
+          value={response}
           onChange={(event) => setResponse(event.target.value)}
         />
       ) : (
