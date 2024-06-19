@@ -1,13 +1,13 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import signInEmail from "../../services/authService";
+import { signInEmail } from "../../services/authService";
 export function LogInButton(props) {
   const handleLogin = async () => {
     try {
       const user = signInEmail(props.email, props.password);
-
       //If we have successfully retrieved a user from the signInEmail method
       if (user) {
         //assign user value to higher level
+        //Above is done automatically by useAuthentication
 
         window.location.href = "/dashboard";
       }

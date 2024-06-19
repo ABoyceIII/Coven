@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Home from "./pages/Initial/Home.js";
 import Login from "./pages/Initial/Login.js";
+import { useAuthentication } from "./services/authService.js";
+import { useState } from "react";
 
 function App() {
   const user = useAuthentication();

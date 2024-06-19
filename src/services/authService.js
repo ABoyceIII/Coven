@@ -1,4 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import { useState, useEffect } from "react";
 
 /**
  * Checks if the given email and password properly correspond to an existing account.
@@ -7,7 +9,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
  * @param {*} password
  * @returns
  */
-function signInEmail(email, password) {
+export function signInEmail(email, password) {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
