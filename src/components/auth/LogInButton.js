@@ -3,8 +3,9 @@ import { signInEmail } from "../../services/authService";
 export function LogInButton(props) {
   const handleLogin = async () => {
     try {
-      const user = signInEmail(props.email, props.password);
+      const user = await signInEmail(props.email, props.password);
       //If we have successfully retrieved a user from the signInEmail method
+      console.log(user);
       if (user) {
         //assign user value to higher level
         //Above is done automatically by useAuthentication
@@ -32,7 +33,7 @@ export function LogInButton(props) {
   };
 
   return (
-    <button onClick={() => handleLogin()} className="WelcomeButton">
+    <button onClick={async () => await handleLogin()} className="WelcomeButton">
       login
     </button>
   );

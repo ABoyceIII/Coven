@@ -4,23 +4,18 @@ import { useState, useEffect } from "react";
 
 /**
  * Checks if the given email and password properly correspond to an existing account.
- * If so, the user data is returned.
+ * If so, the user data is returned. Otherwise, throws error
+ * Tested; Successfully returns a UserImpl
  * @param {*} email
  * @param {*} password
  * @returns
  */
-export function signInEmail(email, password) {
+export async function signInEmail(email, password) {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      return user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+  var userCredential = await signInWithEmailAndPassword(auth, email, password);
+  const user = userCredential.user;
+  console.log(user);
+  return user;
 }
 
 /**
