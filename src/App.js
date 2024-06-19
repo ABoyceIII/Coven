@@ -3,12 +3,16 @@ import "./css/App.css";
 import Home from "./pages/Initial/Home.js";
 import Login from "./pages/Initial/Login.js";
 import { useAuthentication } from "./services/authService.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const user = useAuthentication();
-  const [userResident, setUserResident] = useState();
   const [environment, setEnvironment] = useState();
+
+  //Whenever user updates, refresh our environment variable.
+  useEffect(() => {
+    console.log("Refreshing Environment");
+  }, [user]);
 
   return (
     <div className="App">
