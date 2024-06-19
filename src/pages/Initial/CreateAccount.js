@@ -7,8 +7,30 @@ export default function CreateAccount() {
   const [displayName, setDisplayName] = useState("");
   const [fullName, setFullName] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="CreateAccount">
+      <h2>please provide your email and password</h2>
+
+      <input
+        type="text"
+        value={email}
+        placeholder="email"
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
+      />
+      <input
+        type="password"
+        value={password}
+        placeholder="password"
+        onChange={(event) => {
+          setPassword(event.target.value);
+        }}
+      />
+
       <h2 className="SetupInstruction">
         please confirm your account information. this information will only be
         accessible to the users who share your residence.
