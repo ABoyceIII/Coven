@@ -1,4 +1,6 @@
+import { validatePassword } from "firebase/auth";
 import { useState } from "react";
+import { auth } from "../../firebaseConfig";
 
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
@@ -9,6 +11,35 @@ export default function CreateAccount() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleClick = async () => {
+    if (await validateFields()) {
+      //Create account
+    }
+  };
+
+  const validateFields = async () => {
+    //TODO: Create doesEmailExist method
+    // if (await doesEmailExist(email)) {
+    //   setErrorMessage("An account already exists with this email.");
+    // }
+
+    //TODO: Research validatePassword method
+    if (!validatePassword(auth, password)) {
+      //Look into validatePassword method
+      setErrorMessage("Password is invalid.");
+    }
+    if (fullName.length > 20 || fullName.length < 4) {
+      setErrorMessage("Full Name must be between 4 and 20 characters.");
+    }
+    if (displayName.length > 10 || fullName.length < 4) {
+      setErrorMessage("Display name must be between 2 and 10 characters.");
+    }
+
+    return errorMessage == "";
+  };
 
   return (
     <div className="CreateAccount">
@@ -84,6 +115,7 @@ export default function CreateAccount() {
       ) : (
         <h2 />
       )}
+      <button onClick={handleClick()}>create account</button>
     </div>
   );
 }
