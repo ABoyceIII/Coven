@@ -34,6 +34,14 @@ export default function Login() {
       </div>
 
       <LogInButton email={email} password={password} />
+      <button
+        className="WelcomeButton"
+        onClick={() => {
+          window.location.href = "/";
+        }}
+      >
+        back
+      </button>
     </div>
   );
 }
