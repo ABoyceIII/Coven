@@ -1,0 +1,38 @@
+.Login {
+  background: linear-gradient(
+    325deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(13, 24, 133, 1) 74%,
+    rgba(39, 24, 166, 1) 100%
+  );
+
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Login h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 58pt;
+  display: flex;
+  flex-direction: row;
+  padding-top: 8%;
+  padding-bottom: 35px;
+  justify-content: space-around;
+}
+
+.LoginFields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Login input {
+  margin: 5px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  width: 20vw;
+  height: 3vw;
+}

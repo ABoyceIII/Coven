@@ -38,6 +38,12 @@
   align-self: center;
 }
 
+.WelcomeButton:hover {
+  background: #f0f0f0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .Home .RedirectButtons {
   display: flex;
   flex-direction: column;
