@@ -3,7 +3,7 @@ import { useState } from "react";
 import { auth } from "../../firebaseConfig";
 import { createAccount } from "../../services/authService";
 import { FirebaseError } from "firebase/app";
-
+import "../../css/CreateAccount.css";
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -14,6 +14,7 @@ export default function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [step, setStep] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
 
   /**
@@ -85,79 +86,85 @@ export default function CreateAccount() {
 
   return (
     <div className="CreateAccount">
-      <h2>please provide your email and password</h2>
+      {step == 0 ? (
+        <div className="StepOne">
+          <h2>please provide your email and password</h2>
 
-      <input
-        type="text"
-        value={email}
-        placeholder="email"
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-      />
-      <input
-        type="password"
-        value={password}
-        placeholder="password"
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-      />
-
-      <h2 className="SetupInstruction">
-        please confirm your account information. this information will only be
-        accessible to the users who share your residence.
-      </h2>
-      <input
-        type="text"
-        placeholder="Display Name"
-        onChange={(event) => {
-          setDisplayName(event.target.value);
-        }}
-      />
-      <input
-        type="text"
-        placeholder="Full Name"
-        onChange={(event) => {
-          setFullName(event.target.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          setResponse("");
-          setIsJoining(true);
-          setIsCreating(false);
-        }}
-      >
-        join residence
-      </button>
-      <button
-        onClick={() => {
-          setResponse("");
-          setIsJoining(false);
-          setIsCreating(true);
-        }}
-      >
-        create residence
-      </button>
-      {isJoining ? (
-        <input
-          type="text"
-          placeholder="Join Code"
-          value={response}
-          onChange={(event) => setResponse(event.target.value)}
-        />
-      ) : isCreating ? (
-        <input
-          type="text"
-          placeholder="Residence Name"
-          value={response}
-          onChange={(event) => setResponse(event.target.value)}
-        />
+          <input
+            type="text"
+            value={email}
+            placeholder="email"
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+          <input
+            type="password"
+            value={password}
+            placeholder="password"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+        </div>
       ) : (
-        <h2 />
+        <div className="StepTwo">
+          <h2 className="SetupInstruction">
+            please confirm your account information. this information will only
+            be accessible to the users who share your residence.
+          </h2>
+          <input
+            type="text"
+            placeholder="Display Name"
+            onChange={(event) => {
+              setDisplayName(event.target.value);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Full Name"
+            onChange={(event) => {
+              setFullName(event.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              setResponse("");
+              setIsJoining(true);
+              setIsCreating(false);
+            }}
+          >
+            join residence
+          </button>
+          <button
+            onClick={() => {
+              setResponse("");
+              setIsJoining(false);
+              setIsCreating(true);
+            }}
+          >
+            create residence
+          </button>
+          {isJoining ? (
+            <input
+              type="text"
+              placeholder="Join Code"
+              value={response}
+              onChange={(event) => setResponse(event.target.value)}
+            />
+          ) : isCreating ? (
+            <input
+              type="text"
+              placeholder="Residence Name"
+              value={response}
+              onChange={(event) => setResponse(event.target.value)}
+            />
+          ) : (
+            <h2 />
+          )}
+          <button onClick={() => handleClick()}>create account</button>
+        </div>
       )}
-      <button onClick={() => handleClick()}>create account</button>
     </div>
   );
 }
