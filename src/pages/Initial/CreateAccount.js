@@ -70,14 +70,14 @@ export default function CreateAccount() {
       setErrorMessage("Password must be 8 characters or greater.");
       areFieldsValid = false;
     }
-    if (fullName.length > 25 || fullName.length < 4) {
-      setErrorMessage("Full Name must be between 4 and 25 characters.");
-      areFieldsValid = false;
-    }
-    if (displayName.length > 10 || displayName.length < 4) {
-      setErrorMessage("Display name must be between 2 and 10 characters.");
-      areFieldsValid = false;
-    }
+    // if (fullName.length > 25 || fullName.length < 4) {
+    //   setErrorMessage("Full Name must be between 4 and 25 characters.");
+    //   areFieldsValid = false;
+    // }
+    // if (displayName.length > 10 || displayName.length < 4) {
+    //   setErrorMessage("Display name must be between 2 and 10 characters.");
+    //   areFieldsValid = false;
+    // }
     if (areFieldsValid) {
       setErrorMessage("");
     }
