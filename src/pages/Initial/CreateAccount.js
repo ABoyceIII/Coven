@@ -4,6 +4,7 @@ import { auth } from "../../firebaseConfig";
 import { createAccount } from "../../services/authService";
 import { FirebaseError } from "firebase/app";
 import "../../css/CreateAccount.css";
+import { createResident } from "../../services/residenceService";
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -14,7 +15,6 @@ export default function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [step, setStep] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
 
   /**
@@ -28,7 +28,7 @@ export default function CreateAccount() {
   const handleClick = async () => {
     try {
       await handleCreateAccount();
-      window.location.href = "/dashboard";
+      window.location.href = "/assign";
     } catch (error) {
       if (error.message == "Firebase: Error (auth/email-already-in-use).") {
         console.log("Email already in use.");
@@ -85,127 +85,45 @@ export default function CreateAccount() {
     return areFieldsValid;
   };
 
-  const finishFirstStep = () => {
-    // TODO: More in-depth field validation for email and password.
-    if (email && password) {
-      setStep(1);
-    }
-  };
-
   // TODO: Create account after first page, like mobile app.
-  //TODO: Adjust css for page
+  // TODO: Adjust css for page
   return (
     <div className="CreateAccount">
-      {step == 0 ? (
-        <div className="StepOne">
-          <h2>please provide your email and password</h2>
+      <h2>please provide your email and password</h2>
 
-          <input
-            type="text"
-            value={email}
-            placeholder="email"
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-          <input
-            type="password"
-            value={password}
-            placeholder="password"
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-          {/* TODO: Add password confirmation input box */}
-          <button
-            className="WelcomeButton"
-            onClick={() => {
-              finishFirstStep();
-            }}
-          >
-            next
-          </button>
-          <button
-            className="WelcomeButton"
-            onClick={() => {
-              window.location.href = "/";
-            }}
-          >
-            back
-          </button>
-        </div>
-      ) : (
-        <div className="StepTwo">
-          <h2 className="SetupInstruction">
-            please confirm your account information. this information will only
-            be accessible to the users who share your residence.
-          </h2>
-          <input
-            type="text"
-            placeholder="Display Name"
-            value={displayName}
-            onChange={(event) => {
-              setDisplayName(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={fullName}
-            onChange={(event) => {
-              setFullName(event.target.value);
-            }}
-          />
-          <button
-            className="WelcomeButton"
-            onClick={() => {
-              setResponse("");
-              setIsJoining(true);
-              setIsCreating(false);
-            }}
-          >
-            join residence
-          </button>
-          <button
-            className="WelcomeButton"
-            onClick={() => {
-              setResponse("");
-              setIsJoining(false);
-              setIsCreating(true);
-            }}
-          >
-            create residence
-          </button>
-          {isJoining ? (
-            <input
-              type="text"
-              placeholder="Join Code"
-              value={response}
-              onChange={(event) => setResponse(event.target.value)}
-            />
-          ) : isCreating ? (
-            <input
-              type="text"
-              placeholder="Residence Name"
-              value={response}
-              onChange={(event) => setResponse(event.target.value)}
-            />
-          ) : (
-            <h2 />
-          )}
-          <button
-            className="WelcomeButton"
-            onClick={() => {
-              setStep(0);
-            }}
-          >
-            back
-          </button>
-          <button className="WelcomeButton" onClick={() => handleClick()}>
-            create account
-          </button>
-        </div>
-      )}
+      <input
+        type="text"
+        value={email}
+        placeholder="email"
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
+      />
+      <input
+        type="password"
+        value={password}
+        placeholder="password"
+        onChange={(event) => {
+          setPassword(event.target.value);
+        }}
+      />
+      {/* TODO: Add password confirmation input box */}
+      <button
+        className="WelcomeButton"
+        onClick={() => {
+          handleClick();
+        }}
+      >
+        create account
+      </button>
+      <button
+        className="WelcomeButton"
+        onClick={() => {
+          window.location.href = "/";
+        }}
+      >
+        back
+      </button>
     </div>
   );
 }
