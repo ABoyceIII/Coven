@@ -106,6 +106,13 @@ export default function CreateAccount() {
               setPassword(event.target.value);
             }}
           />
+          <button
+            onClick={() => {
+              setStep(1);
+            }}
+          >
+            next
+          </button>
         </div>
       ) : (
         <div className="StepTwo">
@@ -162,6 +169,13 @@ export default function CreateAccount() {
           ) : (
             <h2 />
           )}
+          <button
+            onClick={() => {
+              setStep(0);
+            }}
+          >
+            back
+          </button>
           <button onClick={() => handleClick()}>create account</button>
         </div>
       )}
