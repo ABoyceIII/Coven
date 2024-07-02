@@ -84,6 +84,13 @@ export default function CreateAccount() {
     return areFieldsValid;
   };
 
+  const finishFirstStep = () => {
+    // TODO: More in-depth field validation for email and password.
+    if (email && password) {
+      setStep(1);
+    }
+  };
+
   // TODO: Create account after first page, like mobile app.
   //TODO: Adjust css for page
   return (
@@ -112,7 +119,7 @@ export default function CreateAccount() {
           <button
             className="WelcomeButton"
             onClick={() => {
-              setStep(1);
+              finishFirstStep();
             }}
           >
             next
@@ -135,6 +142,7 @@ export default function CreateAccount() {
           <input
             type="text"
             placeholder="Display Name"
+            value={displayName}
             onChange={(event) => {
               setDisplayName(event.target.value);
             }}
@@ -142,6 +150,7 @@ export default function CreateAccount() {
           <input
             type="text"
             placeholder="Full Name"
+            value={fullName}
             onChange={(event) => {
               setFullName(event.target.value);
             }}
