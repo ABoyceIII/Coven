@@ -28,6 +28,7 @@ export default function CreateAccount() {
   const handleClick = async () => {
     try {
       await handleCreateAccount();
+      window.location.href = "/dashboard";
     } catch (error) {
       if (error.message == "Firebase: Error (auth/email-already-in-use).") {
         console.log("Email already in use.");
