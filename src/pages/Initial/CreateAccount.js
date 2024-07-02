@@ -84,6 +84,8 @@ export default function CreateAccount() {
     return areFieldsValid;
   };
 
+  // TODO: Create account after first page, like mobile app.
+  //TODO: Adjust css for page
   return (
     <div className="CreateAccount">
       {step == 0 ? (
@@ -106,6 +108,7 @@ export default function CreateAccount() {
               setPassword(event.target.value);
             }}
           />
+          {/* TODO: Add password confirmation input box */}
           <button
             className="WelcomeButton"
             onClick={() => {
