@@ -156,6 +156,7 @@ export default function CreateAccount() {
             }}
           />
           <button
+            className="WelcomeButton"
             onClick={() => {
               setResponse("");
               setIsJoining(true);
@@ -165,6 +166,7 @@ export default function CreateAccount() {
             join residence
           </button>
           <button
+            className="WelcomeButton"
             onClick={() => {
               setResponse("");
               setIsJoining(false);
@@ -198,7 +200,9 @@ export default function CreateAccount() {
           >
             back
           </button>
-          <button onClick={() => handleClick()}>create account</button>
+          <button className="WelcomeButton" onClick={() => handleClick()}>
+            create account
+          </button>
         </div>
       )}
     </div>
