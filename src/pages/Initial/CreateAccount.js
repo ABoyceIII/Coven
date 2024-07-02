@@ -107,11 +107,20 @@ export default function CreateAccount() {
             }}
           />
           <button
+            className="WelcomeButton"
             onClick={() => {
               setStep(1);
             }}
           >
             next
+          </button>
+          <button
+            className="WelcomeButton"
+            onClick={() => {
+              window.location.href = "/";
+            }}
+          >
+            back
           </button>
         </div>
       ) : (
@@ -170,6 +179,7 @@ export default function CreateAccount() {
             <h2 />
           )}
           <button
+            className="WelcomeButton"
             onClick={() => {
               setStep(0);
             }}
