@@ -45,7 +45,7 @@ export default function CreateAccount() {
     if (await validateFields()) {
       try {
         await createAccount(email, password);
-        window.location.href = "/assign";
+        window.location.href = "/account";
       } catch (error) {
         throw error;
       }
