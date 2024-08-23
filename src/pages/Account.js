@@ -52,7 +52,7 @@ export default function Account(props) {
             />
           </div>
         ) : (
-          <>
+          <div>
             {!resident ? (
               // This occurs when loading has finished but there is still no resident.
               <h2>an error has occurred. please log in again.</h2>
@@ -101,7 +101,7 @@ export default function Account(props) {
                 </div>
               </div>
             )}
-          </>
+          </div>
         )}
       </div>
     </div>
