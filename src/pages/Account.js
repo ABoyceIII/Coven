@@ -77,7 +77,8 @@ export default function Account(props) {
                         <p>Full Name: </p>
                         <input type="text" value={resident.fullName} />
                         <p>Email Address: </p>
-                        <input type="text" value={resident.emailAddress} />
+                        {/* <input type="text" value={resident.emailAddress} /> */}
+                        <p>{resident.emailAddress}</p>
                       </div>
                     )}
                   </div>
