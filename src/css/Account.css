@@ -24,6 +24,7 @@
   grid-template-rows: repeat(5, 20%);
 }
 
+/* TODO: Change to SVG and align properly */
 .Panel .Loading {
   grid-column: 3;
   grid-row: 3;
