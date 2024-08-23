@@ -17,4 +17,14 @@
   grid-row: 2 / span 8;
   background-color: white;
   border-radius: 9px;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(5, 20%);
+}
+
+.Panel .Loading {
+  grid-column: 3;
+  grid-row: 3;
 }

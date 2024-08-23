@@ -13,9 +13,9 @@ export default function Account(user) {
         {/* If no user loaded, then loading screen */}
 
         {isLoading ? (
-          <div className="loading">
+          <div className="Loading">
             <img
-              src="../assets/loading/loading-opaque.gif"
+              src={require("../assets/loading/loading-opaque.gif")}
               alt="loading animation"
             />
           </div>
