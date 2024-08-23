@@ -3,4 +3,18 @@
 
   grid-template-columns: repeat(10, 10vw);
   grid-template-rows: repeat(10, 10vh);
+
+  background: linear-gradient(
+    325deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(13, 24, 133, 1) 74%,
+    rgba(39, 24, 166, 1) 100%
+  );
+}
+
+.Account .Panel {
+  grid-column: 2 / span 8;
+  grid-row: 2 / span 8;
+  background-color: white;
+  border-radius: 9px;
 }

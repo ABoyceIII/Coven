@@ -14,7 +14,10 @@ export default function Account(user) {
 
         {isLoading ? (
           <div className="loading">
-            <img src="" alt="" />
+            <img
+              src="../assets/loading/loading-opaque.gif"
+              alt="loading animation"
+            />
           </div>
         ) : (
           <div className="AccountPanel"></div>
