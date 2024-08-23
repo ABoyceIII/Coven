@@ -60,7 +60,7 @@ export default function Account(props) {
               <div className="AccountPanel">
                 <img src={resident.photoURL} alt="" className="UserPfp" />
                 <div className="AccountFields">
-                  <>
+                  <div>
                     {!isEditActive ? (
                       <div>
                         <p>Display Name: </p>
@@ -80,22 +80,40 @@ export default function Account(props) {
                         <input type="text" value={resident.emailAddress} />
                       </div>
                     )}
-                  </>
+                  </div>
                 </div>
                 <div>
                   {isEditActive ? (
                     <div>
-                      <input type="button" value="SAVE" />
+                      <button>SAVE</button>
                     </div>
                   ) : (
                     <div>
-                      <input
-                        type="button"
-                        value="EDIT"
+                      <button
                         onClick={() => {
                           setIsEditActive(true);
                         }}
-                      />
+                      >
+                        EDIT
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <div>
+                  {resident.residence ? (
+                    <div>
+                      <button>GO TO DASHBOARD</button>
+                    </div>
+                  ) : (
+                    <div>
+                      <h2>
+                        you haven't been assigned to a residence. would you like
+                        to create or join one?
+                      </h2>
+                      <div>
+                        <button>join</button>
+                        <button>create</button>
+                      </div>
                     </div>
                   )}
                 </div>
