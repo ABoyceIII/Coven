@@ -1,25 +1,24 @@
-class Resident {
-    #displayName;
-    #emailAddress;
-    #fullName;
-    #phoneNumber
-    #photoURL;
-    #residence;
-    #rooms = [];
-    #statusColor = "#808080";
-    #statusDescription = "";
-    #reference
-    #residence
+export default class Resident {
+  #displayName;
+  #emailAddress;
+  #fullName;
+  #phoneNumber;
+  #photoURL;
+  #residence;
+  #rooms = [];
+  #statusColor = "#808080";
+  #statusDescription = "";
+  #reference;
 
-    /**
-     * Constructor used at Welcome page
-     * @param {*} displayName 
-     * @param {*} emailAddress 
-     * @param {*} fullName 
-     */
-    constructor(displayName, emailAddress, fullName) {
-        this.displayName = displayName
-        this.emailAddress = emailAddress,
-        this.fullName = fullName
-    }
+  /**
+   * Constructor used at Welcome page
+   * @param {*} displayName
+   * @param {*} emailAddress
+   * @param {*} fullName
+   */
+  constructor(displayName, emailAddress, fullName) {
+    this.displayName = displayName;
+    this.emailAddress = emailAddress;
+    this.fullName = fullName;
+  }
 }
