@@ -1,0 +1,6 @@
+.Account {
+  display: grid;
+
+  grid-template-columns: repeat(10, 10vw);
+  grid-template-rows: repeat(10, 10vh);
+}
