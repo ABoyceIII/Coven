@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../css/Account.css";
 import Resident from "../classes/resident";
-export default function Account(user) {
+export default function Account(props) {
   const [isEditActive, setIsEditActive] = useState(false);
   const [resident, setResident] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +10,23 @@ export default function Account(user) {
   const [displayName, setDisplayName] = useState("");
 
   useEffect(() => {
-    console.log(user);
+    console.log(props.user);
+  }, []);
+
+  // When page is loaded, check props.
+  // If props has a resident, load resident.
+  // If props has no resident, fetch resident info from user and load resident from that info.
+
+  useEffect(() => {
+    if (props.resident) {
+      setResident(props.resident);
+    } else if (props.user) {
+      //make new resident from user info
+      //set resident
+    } else {
+      //No resident, no user
+      //Send Error Message
+    }
   }, []);
 
   //DEBUG STUFF
