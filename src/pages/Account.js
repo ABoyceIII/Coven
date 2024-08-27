@@ -14,9 +14,16 @@ export default function Account(props) {
   const [fullName, setFullName] = useState("");
   const [displayName, setDisplayName] = useState("");
 
+  const [debug, setDebug] = useState(false);
+
   useEffect(() => {
     console.log(props);
   }, [props]);
+
+  useEffect(() => {
+    console.log("Resident:");
+    console.log(resident);
+  }, [resident]);
 
   useEffect(() => {
     async function loadResident() {
@@ -57,12 +64,18 @@ export default function Account(props) {
 
   //DEBUG STUFF
   useEffect(() => {
-    var resi = new Resident("Allen", "allenboyceiii@gmail.com", "Allen Boyce");
-    resi.photoURL =
-      "https://lh3.googleusercontent.com/ogw/AF2bZyjtz9wNsY-y34KSgIMlIuBxWsahXnTbWsBz7dz-GdUmuw=s32-c-mo";
-    setResident(resi);
-    setIsLoading(false);
-    setIsEditActive(true);
+    if (debug) {
+      var resi = new Resident(
+        "Allen",
+        "allenboyceiii@gmail.com",
+        "Allen Boyce"
+      );
+      resi.photoURL =
+        "https://lh3.googleusercontent.com/ogw/AF2bZyjtz9wNsY-y34KSgIMlIuBxWsahXnTbWsBz7dz-GdUmuw=s32-c-mo";
+      setResident(resi);
+      setIsLoading(false);
+      setIsEditActive(true);
+    }
   }, []);
 
   return (

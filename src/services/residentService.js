@@ -30,7 +30,7 @@ export async function fetchResident(uid) {
 }
 
 //Temporary, only using 3 params
-export async function generateResident(data) {
+export function generateResident(data) {
   let resident = new Resident(
     data.displayName,
     data.emailAddress,
