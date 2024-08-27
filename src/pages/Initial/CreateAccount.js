@@ -5,17 +5,21 @@ import { createAccount } from "../../services/authService";
 import { FirebaseError } from "firebase/app";
 import "../../css/CreateAccount.css";
 import { createResident } from "../../services/residenceService";
+import { useNavigate } from "react-router-dom";
+import Resident from "../../classes/resident";
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [response, setResponse] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [fullName, setFullName] = useState("");
+  const [displayName, setDisplayName] = useState("display"); //temp val
+  const [fullName, setFullName] = useState("fullname"); //temp val
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   /**
    * Handles the create account button functionality.
@@ -27,7 +31,17 @@ export default function CreateAccount() {
    */
   const handleClick = async () => {
     try {
-      await handleCreateAccount();
+      let user = await handleCreateAccount();
+
+      var residentData = {
+        uid: user.uid,
+        emailAddress: email,
+        fullName: fullName,
+        displayName: displayName,
+      };
+      await createResident(residentData);
+
+      window.location.href = "/account";
     } catch (error) {
       if (error.message == "Firebase: Error (auth/email-already-in-use).") {
         console.log("Email already in use.");
@@ -44,8 +58,8 @@ export default function CreateAccount() {
   const handleCreateAccount = async () => {
     if (await validateFields()) {
       try {
-        await createAccount(email, password);
-        window.location.href = "/account";
+        let user = await createAccount(email, password);
+        return user;
       } catch (error) {
         throw error;
       }

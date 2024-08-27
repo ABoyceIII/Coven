@@ -48,5 +48,5 @@ export async function createAccount(email, password) {
     email,
     password
   );
-  var user = userCredential.user;
+  return userCredential.user;
 }

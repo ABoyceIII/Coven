@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "../css/Account.css";
 import Resident from "../classes/resident";
+import {
+  fetchResident,
+  createFirebaseResident,
+  generateResident,
+} from "../services/residentService";
 export default function Account(props) {
   const [isEditActive, setIsEditActive] = useState(false);
   const [resident, setResident] = useState(null);
@@ -10,24 +15,45 @@ export default function Account(props) {
   const [displayName, setDisplayName] = useState("");
 
   useEffect(() => {
-    console.log(props.user);
-  }, []);
+    console.log(props);
+  }, [props]);
+
+  useEffect(() => {
+    async function loadResident() {
+      if (props.user) {
+        //TODO: catch errors here
+        let data = {
+          fullName: fullName,
+          displayName: displayName,
+          uid: props.user.uid,
+          emailAddress: props.user.email,
+          photoURL:
+            "https://firebasestorage.googleapis.com/v0/b/coven-alpha.appspot.com/o/generic.png?alt=media&token=bdb496be-d4a4-460a-8288-d83fe995ae3b",
+        };
+        //var resident = await createFirebaseResident(props.user.uid, data);
+
+        setResident(generateResident(data));
+        setIsLoading(false);
+      }
+    }
+    loadResident();
+  }, [props]);
 
   // When page is loaded, check props.
   // If props has a resident, load resident.
   // If props has no resident, fetch resident info from user and load resident from that info.
 
-  useEffect(() => {
-    if (props.resident) {
-      setResident(props.resident);
-    } else if (props.user) {
-      //make new resident from user info
-      //set resident
-    } else {
-      //No resident, no user
-      //Send Error Message
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (props.resident) {
+  //     setResident(props.resident);
+  //   } else if (props.user) {
+  //     //make new resident from user info
+  //     //set resident
+  //   } else {
+  //     //No resident, no user
+  //     //Send Error Message
+  //   }
+  // }, []);
 
   //DEBUG STUFF
   useEffect(() => {

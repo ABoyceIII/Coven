@@ -6,9 +6,10 @@ export default class Resident {
   #photoURL;
   #residence;
   #rooms = [];
-  #statusColor = "#808080";
+  #statusColor;
   #statusDescription = "";
   #reference;
+  #uid;
 
   /**
    * Constructor used at Welcome page
@@ -20,5 +21,6 @@ export default class Resident {
     this.displayName = displayName;
     this.emailAddress = emailAddress;
     this.fullName = fullName;
+    this.statusColor = "#808080";
   }
 }

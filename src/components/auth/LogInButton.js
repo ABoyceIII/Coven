@@ -10,7 +10,7 @@ export function LogInButton(props) {
         //assign user value to higher level
         //Above is done automatically by useAuthentication
 
-        window.location.href = "/dashboard";
+        window.location.href = "/account";
       }
     } catch (error) {
       //TODO: Report error on screen to user

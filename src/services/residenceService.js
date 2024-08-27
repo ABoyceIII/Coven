@@ -23,7 +23,12 @@ import {
  *
  * @returns Reference to newly created user document
  */
-export async function createResident({ displayName, emailAddress, fullName }) {
+export async function createResident({
+  uid,
+  displayName,
+  emailAddress,
+  fullName,
+}) {
   const data = {
     displayName: displayName,
     emailAddress: emailAddress,
