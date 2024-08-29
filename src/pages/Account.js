@@ -100,10 +100,10 @@ export default function Account(props) {
       var resi = new Resident(
         "Allen",
         "allenboyceiii@gmail.com",
-        "Allen Boyce"
+        "Allen Boyce",
+        "1234567890",
+        "https://lh3.googleusercontent.com/ogw/AF2bZyjtz9wNsY-y34KSgIMlIuBxWsahXnTbWsBz7dz-GdUmuw=s32-c-mo"
       );
-      resi.photoURL =
-        "https://lh3.googleusercontent.com/ogw/AF2bZyjtz9wNsY-y34KSgIMlIuBxWsahXnTbWsBz7dz-GdUmuw=s32-c-mo";
       setResident(resi);
       setIsLoading(false);
       setIsEditActive(true);

@@ -38,7 +38,8 @@ export function generateBaseResident(data) {
     data.displayName,
     data.emailAddress,
     data.fullName,
-    data.uid
+    data.uid,
+    data.photoURL
   );
   console.log(resident);
   return resident;

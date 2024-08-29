@@ -17,11 +17,13 @@ export default class Resident {
    * @param {*} emailAddress
    * @param {*} fullName
    */
-  constructor(displayName, emailAddress, fullName, uid) {
+  constructor(displayName, emailAddress, fullName, uid, photoURL) {
+    //TODO: Use private fields instead
     this.displayName = displayName;
     this.emailAddress = emailAddress;
     this.fullName = fullName;
     this.statusColor = "#808080";
     this.uid = uid;
+    this.photoURL = photoURL;
   }
 }
