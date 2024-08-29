@@ -12,6 +12,7 @@ export default function CreateResidence(props) {
       <input
         type="text"
         value={name}
+        placeholder="residence name"
         onChange={(e) => setName(e.target.value)}
       />
       <button>create</button>
