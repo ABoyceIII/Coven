@@ -1,6 +1,6 @@
 import "../../css/Home.css";
-import { SignInButton } from "../../components/SignInButton";
-import { CreateAccountButton } from "../../components/CreateAccountButton";
+import { SignInButton } from "../../components/auth/SignInButton";
+import { CreateAccountButton } from "../../components/auth/CreateAccountButton";
 /*
 The Home page is the first thing a person will see when they launch the app. It just displays a welcome text, and provides the sign-in button.
 */
