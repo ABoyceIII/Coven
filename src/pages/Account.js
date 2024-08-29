@@ -71,6 +71,8 @@ export default function Account(props) {
     if (!isSaving) {
       setIsSaving(true);
       let saveData = { fullName: fullName, displayName: displayName };
+      resident.fullName = fullName;
+      resident.displayName = displayName;
       try {
         await updateFirebaseResident(resident.uid, saveData);
       } catch (error) {
