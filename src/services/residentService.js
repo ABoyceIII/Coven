@@ -52,6 +52,7 @@ export async function createFirebaseResident(uid, data) {
     displayName: data.displayName,
     emailAddress: data.emailAddress,
     uid: data.uid,
+    photoURL: data.photoURL,
   });
 }
 

@@ -39,6 +39,7 @@ export default function CreateAccount() {
         emailAddress: email,
         fullName: fullName,
         displayName: displayName,
+        photoURL: user.photoURL,
       };
       await createFirebaseResident(user.uid, residentData);
 
