@@ -4,7 +4,25 @@ import "../css/CreateResidence.css";
 export default function CreateResidence(props) {
   const [name, setName] = useState("");
 
-  //TODO: Implement sase of no user
+  const [isLoading, setIsLoading] = useState(false);
+
+  //TODO: Implement case of no user
+
+  const handleCreate = async () => {
+    if (validateName()) {
+      //create new residence
+      //assign user to residence
+      //assign residence to user
+      //go to dashboard
+    }
+  };
+
+  const validateName = () => {
+    if (name == "") {
+      console.error("name cannot be empty");
+      return false;
+    }
+  };
 
   return (
     <div className="CreateResidence">
@@ -15,7 +33,7 @@ export default function CreateResidence(props) {
         placeholder="residence name"
         onChange={(e) => setName(e.target.value)}
       />
-      <button>create</button>
+      <button onClick={handleCreate}>create</button>
       <button
         onClick={() => {
           window.location.href = "/account";
