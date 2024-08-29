@@ -11,9 +11,12 @@
     rgba(13, 24, 133, 1) 74%,
     rgba(39, 24, 166, 1) 100%
   );
+
+  color: white;
 }
 
 .Account .Panel {
+  color: black;
   grid-column: 2 / span 8;
   grid-row: 2 / span 8;
   background-color: white;
