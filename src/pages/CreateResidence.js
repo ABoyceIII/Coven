@@ -10,9 +10,11 @@ export default function CreateResidence(props) {
 
   const handleCreate = async () => {
     if (validateName()) {
+      setIsLoading(true);
       //create new residence
       //assign user to residence
       //assign residence to user
+      //if errors, disable loading and show
       //go to dashboard
     }
   };
