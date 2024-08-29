@@ -28,7 +28,7 @@ export default function Account(props) {
 
   useEffect(() => {
     async function loadResident() {
-      let residentData = await fetchResident(props.user.uid);
+      let residentData = await fetchResident(props.user.uid); //right now, the user isn't properly loaded (at least at initial loading of page) so there isn't a user.uid field
       console.log(residentData);
       setFullName(residentData.fullName);
       setDisplayName(residentData.displayName);

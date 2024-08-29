@@ -22,7 +22,7 @@ export async function fetchResident(uid) {
 
   if (docSnap.exists()) {
     let data = docSnap.data();
-    return data;
+    return data.data;
   } else {
     console.log(
       "ERROR: Resident Document not found. Error occurred while fetching Resident."
