@@ -67,15 +67,18 @@ export default function Account(props) {
   }, [resident]);
 
   const handleSave = async () => {
-    setIsSaving(true);
-    let saveData = { fullName: fullName, displayName: displayName };
-    try {
-      await updateFirebaseResident(resident.uid, saveData);
-    } catch (error) {
-      console.error("ERROR while saving data: ", error);
+    //Avoid doubling up
+    if (!isSaving) {
+      setIsSaving(true);
+      let saveData = { fullName: fullName, displayName: displayName };
+      try {
+        await updateFirebaseResident(resident.uid, saveData);
+      } catch (error) {
+        console.error("ERROR while saving data: ", error);
+      }
+      setIsSaving(false);
+      setIsEditActive(false);
     }
-    setIsSaving(false);
-    setIsEditActive(false);
   };
 
   //DEBUG STUFF
