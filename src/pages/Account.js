@@ -8,14 +8,15 @@ import {
   updateFirebaseResident,
 } from "../services/residentService";
 export default function Account(props) {
+  //TODO: Tidy TF up
   const [isEditActive, setIsEditActive] = useState(false);
   const [resident, setResident] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  const [fullName, setFullName] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+  const [fullName, setFullName] = useState("loading");
+  const [displayName, setDisplayName] = useState("loading");
+  const [photoURL, setPhotoURL] = useState("loading");
 
   const [debug, setDebug] = useState(false);
 
@@ -34,24 +35,31 @@ export default function Account(props) {
         //TODO: catch errors here
         //console.log(props.user);
         let residentData = await fetchResident(props.user.uid);
+        console.log(residentData);
+
+        // let data = {
+        //   fullName: residentData.fullName,
+        //   displayName: residentData.displayName,
+        //   uid: residentData.uid,
+        //   emailAddress: residentData.email,
+        //   photoURL: residentData.photoURL,
+        // };
+        // console.log(data);
         //console.log(residentData);
+        //var resident = await createFirebaseResident(props.user.uid, data);
         setFullName(residentData.fullName);
         setDisplayName(residentData.displayName);
         setPhotoURL(residentData.photoURL);
+        let generatedResident = generateBaseResident(residentData);
+        console.log(generatedResident);
 
-        let data = {
-          fullName: fullName,
-          displayName: displayName,
-          uid: props.user.uid,
-          emailAddress: props.user.email,
-          photoURL: photoURL,
-        };
-        //var resident = await createFirebaseResident(props.user.uid, data);
-        let generatedResident = generateBaseResident(data);
-        //console.log(generatedResident);
         setResident(generatedResident);
-        //console.log(resident);
-        //May throw errors if fullName and displayName fields aren't created when blank account is generated.
+        // resident.fullName = data.fullName;
+        // resident.displayName = data.displayName;
+
+        // setFullName(generatedResident.fullName);
+        // setDisplayName(generatedResident.displayName);
+        // setPhotoURL(generatedResident.photoURL);
       }
     }
 
@@ -60,8 +68,9 @@ export default function Account(props) {
 
   useEffect(() => {
     if (resident) {
-      setFullName(resident.fullName);
-      setDisplayName(resident.displayName);
+      // setFullName(resident.fullName);
+      // setDisplayName(resident.displayName);
+      // setPhotoURL(resident.photoURL);
       setIsLoading(false);
     }
   }, [resident]);
@@ -119,7 +128,7 @@ export default function Account(props) {
             ) : (
               <div className="AccountPanel">
                 {/* IMAGE SRC DOESN'T FUNCTION */}
-                <img src={resident.photoURL} alt="" className="UserPfp" />
+                <img src={photoURL} alt="" className="UserPfp" />
                 <div className="AccountFields">
                   <div>
                     <p>Display Name: </p>
