@@ -13,6 +13,7 @@ export default function Account(props) {
 
   const [fullName, setFullName] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
 
   const [debug, setDebug] = useState(false);
 
@@ -26,20 +27,35 @@ export default function Account(props) {
   }, [resident]);
 
   useEffect(() => {
-    if (props.user) {
-      //TODO: catch errors here
-      let data = {
-        fullName: fullName,
-        displayName: displayName,
-        uid: props.user.uid,
-        emailAddress: props.user.email,
-        photoURL: props.user.photoURL,
-      };
-      //var resident = await createFirebaseResident(props.user.uid, data);
+    async function loadResident() {
+      let residentData = await fetchResident(props.user.uid);
+      console.log(residentData);
+      setFullName(residentData.fullName);
+      setDisplayName(residentData.displayName);
+      setPhotoURL(residentData.photoURL);
 
-      setResident(generateResident(data));
-      setIsLoading(false);
+      if (props.user) {
+        //TODO: catch errors here
+
+        let data = {
+          fullName: fullName,
+          displayName: displayName,
+          uid: props.user.uid,
+          emailAddress: props.user.email,
+          photoURL: photoURL,
+        };
+        //var resident = await createFirebaseResident(props.user.uid, data);
+
+        setResident(generateResident(data));
+
+        //May throw errors if fullName and displayName fields aren't created when blank account is generated.
+        setFullName(resident.fullName);
+        setDisplayName(resident.displayName);
+        setIsLoading(false);
+      }
     }
+
+    loadResident();
   }, [props]);
 
   // When page is loaded, check props.

@@ -7,6 +7,7 @@ import "../../css/CreateAccount.css";
 import { createResident } from "../../services/residenceService";
 import { useNavigate } from "react-router-dom";
 import Resident from "../../classes/resident";
+import { createFirebaseResident } from "../../services/residentService";
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -32,14 +33,14 @@ export default function CreateAccount() {
   const handleClick = async () => {
     try {
       let user = await handleCreateAccount();
-
+      console.log(user);
       var residentData = {
         uid: user.uid,
         emailAddress: email,
         fullName: fullName,
         displayName: displayName,
       };
-      await createResident(residentData);
+      await createFirebaseResident(user.uid, residentData);
 
       window.location.href = "/account";
     } catch (error) {

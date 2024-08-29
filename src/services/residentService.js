@@ -22,10 +22,12 @@ export async function fetchResident(uid) {
 
   if (docSnap.exists()) {
     let data = docSnap.data();
+    return data;
   } else {
     console.log(
       "ERROR: Resident Document not found. Error occurred while fetching Resident."
     );
+    console.log("Couldn't find resident with UID ", uid);
   }
 }
 
@@ -40,6 +42,9 @@ export function generateResident(data) {
 }
 
 export async function createFirebaseResident(uid, data) {
+  console.log("FLAG 45");
+  console.log(uid);
+  console.log(data);
   await setDoc(doc(db, "Residents", uid), {
     data,
   });
