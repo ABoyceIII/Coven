@@ -33,14 +33,13 @@ export default function Account(props) {
         displayName: displayName,
         uid: props.user.uid,
         emailAddress: props.user.email,
-        photoURL:
-          "https://firebasestorage.googleapis.com/v0/b/coven-alpha.appspot.com/o/generic.png?alt=media&token=bdb496be-d4a4-460a-8288-d83fe995ae3b",
+        photoURL: props.user.photoURL,
       };
       //var resident = await createFirebaseResident(props.user.uid, data);
 
       setResident(generateResident(data));
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, [props]);
 
   // When page is loaded, check props.
@@ -94,6 +93,7 @@ export default function Account(props) {
               <h2>an error has occurred. please log in again.</h2>
             ) : (
               <div className="AccountPanel">
+                {/* IMAGE SRC DOESN'T FUNCTION */}
                 <img src={resident.photoURL} alt="" className="UserPfp" />
                 <div className="AccountFields">
                   <div>
