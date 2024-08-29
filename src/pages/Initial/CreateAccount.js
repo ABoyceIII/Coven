@@ -33,7 +33,7 @@ export default function CreateAccount() {
   const handleClick = async () => {
     try {
       let user = await handleCreateAccount();
-      console.log(user);
+      //console.log(user);
       var residentData = {
         uid: user.uid,
         emailAddress: email,

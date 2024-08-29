@@ -33,7 +33,7 @@ export async function fetchResident(uid) {
 
 //Temporary, only using 4 params
 export function generateBaseResident(data) {
-  console.log(data);
+  //console.log(data);
   let resident = new Resident(
     data.displayName,
     data.emailAddress,
@@ -41,7 +41,7 @@ export function generateBaseResident(data) {
     data.uid,
     data.photoURL
   );
-  console.log(resident);
+  //console.log(resident);
   return resident;
 }
 
@@ -58,11 +58,11 @@ export async function createFirebaseResident(uid, data) {
 }
 
 export async function updateFirebaseResident(uid, data) {
-  console.log(uid, data);
+  //(uid, data);
   try {
     const residentRef = doc(db, "Residents", uid);
     await updateDoc(residentRef, data);
-    console.log("Resident document successfully updated");
+    //console.log("Resident document successfully updated");
   } catch (error) {
     console.error("Error updating resident document: ", error);
   }

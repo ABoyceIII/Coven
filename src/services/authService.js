@@ -18,7 +18,7 @@ export async function signInEmail(email, password) {
   const auth = getAuth();
   var userCredential = await signInWithEmailAndPassword(auth, email, password);
   const user = userCredential.user;
-  console.log(user);
+  //console.log(user);
   return user;
 }
 

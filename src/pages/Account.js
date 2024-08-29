@@ -23,18 +23,18 @@ export default function Account(props) {
   //   console.log(props);
   // }, [props]);
 
-  useEffect(() => {
-    console.log("Resident:");
-    console.log(resident);
-  }, [resident]);
+  // useEffect(() => {
+  //   console.log("Resident:");
+  //   console.log(resident);
+  // }, [resident]);
 
   useEffect(() => {
     async function loadResident() {
       if (props.user) {
         //TODO: catch errors here
-        console.log(props.user);
+        //console.log(props.user);
         let residentData = await fetchResident(props.user.uid);
-        console.log(residentData);
+        //console.log(residentData);
         setFullName(residentData.fullName);
         setDisplayName(residentData.displayName);
         setPhotoURL(residentData.photoURL);
@@ -48,9 +48,9 @@ export default function Account(props) {
         };
         //var resident = await createFirebaseResident(props.user.uid, data);
         let generatedResident = generateBaseResident(data);
-        console.log(generatedResident);
+        //console.log(generatedResident);
         setResident(generatedResident);
-        console.log(resident);
+        //console.log(resident);
         //May throw errors if fullName and displayName fields aren't created when blank account is generated.
       }
     }
@@ -77,22 +77,6 @@ export default function Account(props) {
     setIsSaving(false);
     setIsEditActive(false);
   };
-
-  // When page is loaded, check props.
-  // If props has a resident, load resident.
-  // If props has no resident, fetch resident info from user and load resident from that info.
-
-  // useEffect(() => {
-  //   if (props.resident) {
-  //     setResident(props.resident);
-  //   } else if (props.user) {
-  //     //make new resident from user info
-  //     //set resident
-  //   } else {
-  //     //No resident, no user
-  //     //Send Error Message
-  //   }
-  // }, []);
 
   //DEBUG STUFF
   useEffect(() => {

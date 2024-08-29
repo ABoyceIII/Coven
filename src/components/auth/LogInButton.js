@@ -5,7 +5,7 @@ export function LogInButton(props) {
     try {
       const user = await signInEmail(props.email, props.password);
       //If we have successfully retrieved a user from the signInEmail method
-      console.log(user);
+      //console.log(user);
       if (user) {
         //assign user value to higher level
         //Above is done automatically by useAuthentication

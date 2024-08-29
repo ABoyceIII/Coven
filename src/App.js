@@ -13,7 +13,7 @@ function App() {
 
   //Whenever user updates, refresh our environment variable.
   useEffect(() => {
-    console.log("Refreshing Environment");
+    //console.log("Refreshing Environment");
   }, [user]);
 
   return (
