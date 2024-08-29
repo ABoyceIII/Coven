@@ -94,6 +94,10 @@ export default function Account(props) {
 
   return (
     <div className="Account">
+      <h1>
+        welcome home{" "}
+        {resident.displayName != "" ? ", " + resident.displayName : "."}
+      </h1>
       <div className="Panel">
         {/* If no user loaded, then loading screen */}
 
@@ -110,80 +114,82 @@ export default function Account(props) {
               // This occurs when loading has finished but there is still no resident.
               <h2>an error has occurred. please log in again.</h2>
             ) : (
-              <div className="AccountPanel">
-                {/* IMAGE SRC DOESN'T FUNCTION */}
-                <img src={photoURL} alt="" className="UserPfp" />
-                <div className="AccountFields">
-                  <div>
-                    <p>Display Name: </p>
-                    {isEditActive ? (
-                      <input
-                        type="text"
-                        value={displayName}
-                        onChange={(e) => setDisplayName(e.target.value)}
-                      />
-                    ) : (
-                      <p>{resident.displayName}</p>
-                    )}
-                    <p>Full Name: </p>
-                    {isEditActive ? (
-                      <input
-                        type="text"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                      />
-                    ) : (
-                      <p>{resident.fullName}</p>
-                    )}
+              <div className="AccountPage">
+                <div className="AccountPanel">
+                  {/* IMAGE SRC DOESN'T FUNCTION */}
+                  <img src={resident.photoURL} alt="" className="UserPfp" />
+                  <div className="AccountFields">
+                    <div>
+                      <p>Display Name: </p>
+                      {isEditActive ? (
+                        <input
+                          type="text"
+                          value={displayName}
+                          onChange={(e) => setDisplayName(e.target.value)}
+                        />
+                      ) : (
+                        <p>{resident.displayName}</p>
+                      )}
+                      <p>Full Name: </p>
+                      {isEditActive ? (
+                        <input
+                          type="text"
+                          value={fullName}
+                          onChange={(e) => setFullName(e.target.value)}
+                        />
+                      ) : (
+                        <p>{resident.fullName}</p>
+                      )}
+                    </div>
+                    <p>Email: {resident.emailAddress}</p>
                   </div>
-                  <p>Email: {resident.emailAddress}</p>
-                </div>
-                <div>
-                  {isEditActive ? (
-                    <div>
-                      <button
-                        onClick={() => {
-                          handleSave();
-                        }}
-                      >
-                        SAVE
-                      </button>
-                    </div>
-                  ) : (
-                    <div>
-                      <button
-                        onClick={() => {
-                          setIsEditActive(true);
-                        }}
-                      >
-                        EDIT
-                      </button>
-                    </div>
-                  )}
-                </div>
-                <div>
-                  {resident.residence ? (
-                    <div>
-                      <button>GO TO DASHBOARD</button>
-                    </div>
-                  ) : (
-                    <div>
-                      <h2>
-                        you haven't been assigned to a residence. would you like
-                        to create or join one?
-                      </h2>
+                  <div>
+                    {isEditActive ? (
                       <div>
-                        <button>join</button>
                         <button
                           onClick={() => {
-                            window.location.href = "/create-residence";
+                            handleSave();
                           }}
                         >
-                          create
+                          SAVE
                         </button>
                       </div>
-                    </div>
-                  )}
+                    ) : (
+                      <div>
+                        <button
+                          onClick={() => {
+                            setIsEditActive(true);
+                          }}
+                        >
+                          EDIT
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    {resident.residence ? (
+                      <div>
+                        <button>GO TO DASHBOARD</button>
+                      </div>
+                    ) : (
+                      <div>
+                        <h2>
+                          you haven't been assigned to a residence. would you
+                          like to create or join one?
+                        </h2>
+                        <div>
+                          <button>join</button>
+                          <button
+                            onClick={() => {
+                              window.location.href = "/create-residence";
+                            }}
+                          >
+                            create
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
