@@ -24,10 +24,10 @@ export async function fetchResident(uid) {
     let data = docSnap.data();
     return data;
   } else {
-    console.log(
+    console.error(
       "ERROR: Resident Document not found. Error occurred while fetching Resident."
     );
-    console.log("Couldn't find resident with UID ", uid);
+    console.error("Couldn't find resident with UID ", uid);
   }
 }
 

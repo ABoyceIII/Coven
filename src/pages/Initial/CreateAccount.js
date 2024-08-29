@@ -46,9 +46,9 @@ export default function CreateAccount() {
       window.location.href = "/account";
     } catch (error) {
       if (error.message == "Firebase: Error (auth/email-already-in-use).") {
-        console.log("Email already in use.");
+        console.error("Email already in use.");
       } else {
-        console.log("Account creation error", error);
+        console.error("Account creation error", error);
       }
     }
   };
@@ -66,7 +66,7 @@ export default function CreateAccount() {
         throw error;
       }
     } else {
-      console.log("Fields not valid");
+      console.error("Fields not valid");
     }
   };
 
@@ -97,7 +97,7 @@ export default function CreateAccount() {
     if (areFieldsValid) {
       setErrorMessage("");
     }
-    console.log(errorMessage);
+    console.error(errorMessage);
     return areFieldsValid;
   };
 

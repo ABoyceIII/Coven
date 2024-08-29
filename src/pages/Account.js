@@ -72,7 +72,7 @@ export default function Account(props) {
     try {
       await updateFirebaseResident(resident.uid, saveData);
     } catch (error) {
-      console.log("ERROR while saving data: ", error);
+      console.error("ERROR while saving data: ", error);
     }
     setIsSaving(false);
     setIsEditActive(false);
