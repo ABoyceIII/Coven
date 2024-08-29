@@ -26,25 +26,21 @@ export default function Account(props) {
   }, [resident]);
 
   useEffect(() => {
-    async function loadResident() {
-      if (props.user) {
-        //TODO: catch errors here
-        let data = {
-          fullName: fullName,
-          displayName: displayName,
-          uid: props.user.uid,
-          emailAddress: props.user.email,
-          photoURL:
-            "https://firebasestorage.googleapis.com/v0/b/coven-alpha.appspot.com/o/generic.png?alt=media&token=bdb496be-d4a4-460a-8288-d83fe995ae3b",
-        };
-        //var resident = await createFirebaseResident(props.user.uid, data);
+    if (props.user) {
+      //TODO: catch errors here
+      let data = {
+        fullName: fullName,
+        displayName: displayName,
+        uid: props.user.uid,
+        emailAddress: props.user.email,
+        photoURL:
+          "https://firebasestorage.googleapis.com/v0/b/coven-alpha.appspot.com/o/generic.png?alt=media&token=bdb496be-d4a4-460a-8288-d83fe995ae3b",
+      };
+      //var resident = await createFirebaseResident(props.user.uid, data);
 
-        setResident(generateResident(data));
-        setIsLoading(false);
-      }
-      setIsLoading(false);
+      setResident(generateResident(data));
     }
-    loadResident();
+    setIsLoading(false);
   }, [props]);
 
   // When page is loaded, check props.
