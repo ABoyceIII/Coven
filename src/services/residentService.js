@@ -31,23 +31,34 @@ export async function fetchResident(uid) {
   }
 }
 
-//Temporary, only using 3 params
-export function generateResident(data) {
+//Temporary, only using 4 params
+export function generateBaseResident(data) {
   console.log(data);
   let resident = new Resident(
     data.displayName,
     data.emailAddress,
-    data.fullName
+    data.fullName,
+    data.uid
   );
   console.log(resident);
   return resident;
 }
 
 export async function createFirebaseResident(uid, data) {
-  console.log("FLAG 45");
-  console.log(uid);
-  console.log(data);
+  //console.log(data);
   await setDoc(doc(db, "Residents", uid), {
+    //TODO: Change so that it adds the fields and not just the data variable
     data,
   });
+}
+
+export async function updateFirebaseResident(uid, data) {
+  console.log(uid, data);
+  try {
+    const residentRef = doc(db, "Residents", uid);
+    await updateDoc(residentRef, data);
+    console.log("Resident document successfully updated");
+  } catch (error) {
+    console.error("Error updating resident document: ", error);
+  }
 }

@@ -4,12 +4,14 @@ import Resident from "../classes/resident";
 import {
   fetchResident,
   createFirebaseResident,
-  generateResident,
+  generateBaseResident,
+  updateFirebaseResident,
 } from "../services/residentService";
 export default function Account(props) {
   const [isEditActive, setIsEditActive] = useState(false);
   const [resident, setResident] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -45,7 +47,7 @@ export default function Account(props) {
           photoURL: photoURL,
         };
         //var resident = await createFirebaseResident(props.user.uid, data);
-        let generatedResident = generateResident(data);
+        let generatedResident = generateBaseResident(data);
         console.log(generatedResident);
         setResident(generatedResident);
         console.log(resident);
@@ -63,6 +65,18 @@ export default function Account(props) {
       setIsLoading(false);
     }
   }, [resident]);
+
+  const handleSave = async () => {
+    setIsSaving(true);
+    let saveData = { fullName: fullName, displayName: displayName };
+    try {
+      await updateFirebaseResident(resident.uid, saveData);
+    } catch (error) {
+      console.log("ERROR while saving data: ", error);
+    }
+    setIsSaving(false);
+    setIsEditActive(false);
+  };
 
   // When page is loaded, check props.
   // If props has a resident, load resident.
@@ -119,32 +133,39 @@ export default function Account(props) {
                 <img src={resident.photoURL} alt="" className="UserPfp" />
                 <div className="AccountFields">
                   <div>
-                    {!isEditActive ? (
-                      <div>
-                        <p>Display Name: </p>
-                        <p>{resident.displayName}</p>
-                        <p>Full Name: </p>
-                        <p>{resident.fullName}</p>
-                        <p>Email Address: </p>
-                        <p>{resident.emailAddress}</p>
-                      </div>
+                    <p>Display Name: </p>
+                    {isEditActive ? (
+                      <input
+                        type="text"
+                        value={displayName}
+                        onChange={(e) => setDisplayName(e.target.value)}
+                      />
                     ) : (
-                      <div>
-                        <p>Display Name: </p>
-                        <input type="text" value={resident.displayName} />
-                        <p>Full Name: </p>
-                        <input type="text" value={resident.fullName} />
-                        <p>Email Address: </p>
-                        {/* <input type="text" value={resident.emailAddress} /> */}
-                        <p>{resident.emailAddress}</p>
-                      </div>
+                      <p>{resident.displayName}</p>
+                    )}
+                    <p>Full Name: </p>
+                    {isEditActive ? (
+                      <input
+                        type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                      />
+                    ) : (
+                      <p>{resident.fullName}</p>
                     )}
                   </div>
+                  <p>Email: {resident.emailAddress}</p>
                 </div>
                 <div>
                   {isEditActive ? (
                     <div>
-                      <button>SAVE</button>
+                      <button
+                        onClick={() => {
+                          handleSave();
+                        }}
+                      >
+                        SAVE
+                      </button>
                     </div>
                   ) : (
                     <div>
