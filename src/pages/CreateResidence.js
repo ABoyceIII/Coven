@@ -19,7 +19,7 @@ export default function CreateResidence(props) {
 
   const validateName = () => {
     if (name == "") {
-      console.error("name cannot be empty");
+      console.error("residence name cannot be empty");
       return false;
     }
   };
