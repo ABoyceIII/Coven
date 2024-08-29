@@ -37,16 +37,6 @@ export default function Account(props) {
         let residentData = await fetchResident(props.user.uid);
         console.log(residentData);
 
-        // let data = {
-        //   fullName: residentData.fullName,
-        //   displayName: residentData.displayName,
-        //   uid: residentData.uid,
-        //   emailAddress: residentData.email,
-        //   photoURL: residentData.photoURL,
-        // };
-        // console.log(data);
-        //console.log(residentData);
-        //var resident = await createFirebaseResident(props.user.uid, data);
         setFullName(residentData.fullName);
         setDisplayName(residentData.displayName);
         setPhotoURL(residentData.photoURL);
@@ -54,12 +44,6 @@ export default function Account(props) {
         console.log(generatedResident);
 
         setResident(generatedResident);
-        // resident.fullName = data.fullName;
-        // resident.displayName = data.displayName;
-
-        // setFullName(generatedResident.fullName);
-        // setDisplayName(generatedResident.displayName);
-        // setPhotoURL(generatedResident.photoURL);
       }
     }
 
