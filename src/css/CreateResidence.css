@@ -1,0 +1,12 @@
+.CreateResidence {
+  background: linear-gradient(
+    325deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(13, 24, 133, 1) 74%,
+    rgba(39, 24, 166, 1) 100%
+  );
+
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
