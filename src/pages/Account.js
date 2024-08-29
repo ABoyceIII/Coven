@@ -176,7 +176,13 @@ export default function Account(props) {
                       </h2>
                       <div>
                         <button>join</button>
-                        <button>create</button>
+                        <button
+                          onClick={() => {
+                            window.location.href = "/create-residence";
+                          }}
+                        >
+                          create
+                        </button>
                       </div>
                     </div>
                   )}
