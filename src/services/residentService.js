@@ -33,11 +33,13 @@ export async function fetchResident(uid) {
 
 //Temporary, only using 3 params
 export function generateResident(data) {
+  console.log(data);
   let resident = new Resident(
     data.displayName,
     data.emailAddress,
     data.fullName
   );
+  console.log(resident);
   return resident;
 }
 

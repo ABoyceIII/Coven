@@ -28,14 +28,14 @@ export default function Account(props) {
 
   useEffect(() => {
     async function loadResident() {
-      let residentData = await fetchResident(props.user.uid); //right now, the user isn't properly loaded (at least at initial loading of page) so there isn't a user.uid field
-      console.log(residentData);
-      setFullName(residentData.fullName);
-      setDisplayName(residentData.displayName);
-      setPhotoURL(residentData.photoURL);
-
       if (props.user) {
         //TODO: catch errors here
+
+        let residentData = await fetchResident(props.user.uid); //right now, the user isn't properly loaded (at least at initial loading of page) so there isn't a user.uid field
+        console.log(residentData);
+        setFullName(residentData.fullName);
+        setDisplayName(residentData.displayName);
+        setPhotoURL(residentData.photoURL);
 
         let data = {
           fullName: fullName,
@@ -45,18 +45,24 @@ export default function Account(props) {
           photoURL: photoURL,
         };
         //var resident = await createFirebaseResident(props.user.uid, data);
-
-        setResident(generateResident(data));
-
+        let generatedResident = generateResident(data);
+        console.log(generatedResident);
+        setResident(generatedResident);
+        console.log(resident);
         //May throw errors if fullName and displayName fields aren't created when blank account is generated.
-        setFullName(resident.fullName);
-        setDisplayName(resident.displayName);
-        setIsLoading(false);
       }
     }
 
     loadResident();
   }, [props]);
+
+  useEffect(() => {
+    if (resident) {
+      setFullName(resident.fullName);
+      setDisplayName(resident.displayName);
+      setIsLoading(false);
+    }
+  }, [resident]);
 
   // When page is loaded, check props.
   // If props has a resident, load resident.
