@@ -19,9 +19,9 @@ export default function Account(props) {
 
   const [debug, setDebug] = useState(false);
 
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
+  // useEffect(() => {
+  //   console.log(props);
+  // }, [props]);
 
   useEffect(() => {
     console.log("Resident:");
@@ -32,8 +32,8 @@ export default function Account(props) {
     async function loadResident() {
       if (props.user) {
         //TODO: catch errors here
-
-        let residentData = await fetchResident(props.user.uid); //right now, the user isn't properly loaded (at least at initial loading of page) so there isn't a user.uid field
+        console.log(props.user);
+        let residentData = await fetchResident(props.user.uid);
         console.log(residentData);
         setFullName(residentData.fullName);
         setDisplayName(residentData.displayName);
