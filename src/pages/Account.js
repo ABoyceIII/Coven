@@ -42,6 +42,7 @@ export default function Account(props) {
         setResident(generateResident(data));
         setIsLoading(false);
       }
+      setIsLoading(false);
     }
     loadResident();
   }, [props]);
