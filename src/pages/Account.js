@@ -95,8 +95,11 @@ export default function Account(props) {
   return (
     <div className="Account">
       <h1>
-        welcome home{" "}
-        {resident.displayName != "" ? ", " + resident.displayName : "."}
+        {!isLoading && resident ? (
+          <div>welcome home, {resident.displayName}</div>
+        ) : (
+          "welcome home."
+        )}
       </h1>
       <div className="Panel">
         {/* If no user loaded, then loading screen */}
