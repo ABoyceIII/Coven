@@ -61,8 +61,6 @@ function generateRandomCode(length) {
   return result;
 }
 
-//AI Generated
-//Untested
 /**
  * Generates a unique join code for a residence.
  * The join code is a random string of 4 uppercase letters.
