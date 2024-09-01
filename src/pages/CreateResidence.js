@@ -20,7 +20,6 @@ export default function CreateResidence(props) {
   const handleCreate = async () => {
     //Avoid doubling up
     if (!isLoading) {
-      //console.log("creating residence");
       if (validateName()) {
         console.log("valid name");
         setIsLoading(true);
@@ -35,9 +34,8 @@ export default function CreateResidence(props) {
           let residenceRef = await createFirebaseResidence(residenceData);
           //assign user to residence by updating user document to include reference to residence
           await updateFirebaseResident(residenceData.ownerUID, {
-            reference: residenceRef,
+            residenceReference: residenceRef,
           });
-          console.log("flag 41");
           setIsLoading(false);
           //redirect to dashboard page
           window.location.href = "/dashboard";
