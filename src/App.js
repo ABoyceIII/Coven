@@ -26,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<CreateAccount />} />
           <Route path="/account" element={<Account user={user} />} />
+          <Route path="/dashboard" element={<Home user={user} />} />
           <Route
             path="/create-residence"
             element={<CreateResidence user={user} />}
