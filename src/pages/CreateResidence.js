@@ -31,6 +31,7 @@ export default function CreateResidence(props) {
           };
           //Create residence document
           let residenceRef = await createFirebaseResidence(residenceData);
+          console.log("flag 34", residenceRef);
           //assign user to residence by updating user document to include reference to residence
           await updateFirebaseResident(residenceData.ownerUID, {
             residenceReference: residenceRef,

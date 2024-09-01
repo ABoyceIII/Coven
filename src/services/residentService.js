@@ -17,6 +17,7 @@ import {
 import Resident from "../classes/resident";
 
 export async function fetchResident(uid) {
+  //TODO: change to fetchResidentData and propogate changes
   const docRef = doc(db, "Residents", uid);
   const docSnap = await getDoc(docRef);
 

@@ -29,7 +29,8 @@ export async function createFirebaseResidence(data) {
   //generate join code
   let joinCode = await generateJoinCode();
   //get reference to owner
-  let residentRef = await fetchResident(data.ownerUID);
+  let residentRef = await fetchResident(data.ownerUID); //May have to change when rename fetchResident to fetchResidentData
+  residentRef = residentRef.reference;
 
   //Create residence document containing name, joinCode and reference to owner resident document
   let residenceRef = await addDoc(collection(db, "Residences"), {
