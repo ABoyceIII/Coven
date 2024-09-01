@@ -45,6 +45,19 @@ export function generateBaseResident(data) {
   return resident;
 }
 
+/**
+ * Creates a new resident document in the Firebase Firestore database.
+ * The resident document contains the full name, display name, email address, profile picture URL, and document reference of the resident.
+ *
+ * @param {string} uid - The unique identifier for the resident.
+ * @param {Object} data - The data for the new resident.
+ * @param {string} data.fullName - The full name of the resident.
+ * @param {string} data.displayName - The display name of the resident.
+ * @param {string} data.emailAddress - The email address of the resident.
+ * @param {string} data.photoURL - The photo URL of the resident.
+ * @returns {Promise<Object>} A promise that resolves to the reference of the created resident document.
+ * @throws {Error} If there is an issue creating the resident document in the database.
+ */
 export async function createFirebaseResident(uid, data) {
   //console.log(data);
   await setDoc(doc(db, "Residents", uid), {
@@ -55,6 +68,13 @@ export async function createFirebaseResident(uid, data) {
     uid: data.uid,
     photoURL: data.photoURL,
   });
+
+  //Fetch reference to new resident document
+  const docRef = doc(db, "Residents", uid);
+  //Update doc to include reference to itself
+  await updateDoc(docRef, { reference: docRef });
+
+  return docRef;
 }
 
 export async function updateFirebaseResident(uid, data) {

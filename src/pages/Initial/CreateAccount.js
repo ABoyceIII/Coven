@@ -7,7 +7,10 @@ import "../../css/CreateAccount.css";
 import { createResident } from "../../services/residenceService";
 import { useNavigate } from "react-router-dom";
 import Resident from "../../classes/resident";
-import { createFirebaseResident } from "../../services/residentService";
+import {
+  createFirebaseResident,
+  updateFirebaseResident,
+} from "../../services/residentService";
 export default function CreateAccount() {
   const [isJoining, setIsJoining] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -41,7 +44,10 @@ export default function CreateAccount() {
         displayName: displayName,
         photoURL: user.photoURL,
       };
-      await createFirebaseResident(user.uid, residentData);
+
+      //Add reference to newly created document to resident object and document
+      let reference = await createFirebaseResident(user.uid, residentData);
+      residentData.reference = reference;
 
       window.location.href = "/account";
     } catch (error) {
