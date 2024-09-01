@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import CreateAccount from "./pages/Initial/CreateAccount.js";
 import Account from "./pages/Account.js";
 import CreateResidence from "./pages/CreateResidence.js";
-
+import Dashboard from "./pages/Main/Dashboard.js";
 function App() {
   const user = useAuthentication();
   const [environment, setEnvironment] = useState();
@@ -26,7 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/create" element={<CreateAccount />} />
           <Route path="/account" element={<Account user={user} />} />
-          <Route path="/dashboard" element={<Home user={user} />} />
+          <Route path="/dashboard" element={<Dashboard user={user} />} />
           <Route
             path="/create-residence"
             element={<CreateResidence user={user} />}

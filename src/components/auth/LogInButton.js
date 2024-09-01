@@ -1,5 +1,6 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { signInEmail } from "../../services/authService";
+import { fetchResident } from "../../services/residentService";
 export function LogInButton(props) {
   const handleLogin = async () => {
     try {
@@ -10,7 +11,22 @@ export function LogInButton(props) {
         //assign user value to higher level
         //Above is done automatically by useAuthentication
 
-        window.location.href = "/account";
+        //Check if user has a residence
+        try {
+          let residentData = await fetchResident(user.uid);
+          //If user has a residence, redirect to dashboard
+          if (residentData.residenceReference) {
+            window.location.href = "/dashboard";
+          } else {
+            //If user does not have a residence, redirect to welcome page
+            window.location.href = "/account";
+          }
+        } catch (error) {
+          //If an error occurs, just redirect to acount page
+          window.location.href = "/account";
+        }
+
+        //window.location.href = "/account";
       }
     } catch (error) {
       //TODO: Report error on screen to user
