@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Residence from "../classes/residence";
+
 import "../css/CreateResidence.css";
 export default function CreateResidence(props) {
   const [name, setName] = useState("");
@@ -14,6 +16,7 @@ export default function CreateResidence(props) {
       if (validateName()) {
         setIsLoading(true);
         //create new residence
+        let residence = new Residence(name);
         //assign user to residence
         //assign residence to user
         //if errors, disable loading and show
