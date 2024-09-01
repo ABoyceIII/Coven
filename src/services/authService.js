@@ -4,6 +4,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { signOut } from "firebase/auth";
+
 import { useState, useEffect } from "react";
 
 /**
@@ -49,4 +51,12 @@ export async function createAccount(email, password) {
     password
   );
   return userCredential.user;
+}
+
+export async function handleSignOut() {
+  try {
+    await signOut(auth).then(() => (window.location.href = `/`));
+  } catch (error) {
+    console.error("Error signing out:", error.message);
+  }
 }

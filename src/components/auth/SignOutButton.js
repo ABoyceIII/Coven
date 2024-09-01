@@ -1,16 +1,7 @@
-import { signOut } from "firebase/auth";
-
-export function SignOutButton() {
-  const onSignOut = async (auth) => {
-    try {
-      await signOut(auth).then(() => (window.location.href = `/`));
-    } catch (error) {
-      console.error("Error signing out:", error.message);
-    }
-  };
-
+import { handleSignOut } from "../../services/authService";
+export default function SignOutButton() {
   return (
-    <button className="SignOutButton" onClick={() => onSignOut(auth)}>
+    <button className="SignOutButton" onClick={() => handleSignOut()}>
       Sign Out
     </button>
   );

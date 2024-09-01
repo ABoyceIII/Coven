@@ -7,6 +7,7 @@ import {
   generateBaseResident,
   updateFirebaseResident,
 } from "../services/residentService";
+import SignOutButton from "../components/auth/SignOutButton";
 export default function Account(props) {
   //TODO: Tidy TF up
   const [isEditActive, setIsEditActive] = useState(false);
@@ -20,14 +21,14 @@ export default function Account(props) {
 
   const [debug, setDebug] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(props);
-  // }, [props]);
+  useEffect(() => {
+    console.log(props);
+  }, []);
 
-  // useEffect(() => {
-  //   console.log("Resident:");
-  //   console.log(resident);
-  // }, [resident]);
+  useEffect(() => {
+    console.log("Resident:");
+    console.log(resident);
+  }, [resident]);
 
   useEffect(() => {
     async function loadResident() {
@@ -199,6 +200,7 @@ export default function Account(props) {
           </div>
         )}
       </div>
+      <SignOutButton />
     </div>
   );
 }
