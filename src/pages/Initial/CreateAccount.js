@@ -11,19 +11,23 @@ import {
   createFirebaseResident,
   updateFirebaseResident,
 } from "../../services/residentService";
+import EnvironmentContext from "../../App";
+import { useContext } from "react";
+
 export default function CreateAccount() {
+  // const { updateEnvironment } = useContext(EnvironmentContext);
+  // const navigate = useNavigate();
+
   const [isJoining, setIsJoining] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [response, setResponse] = useState("");
-  const [displayName, setDisplayName] = useState("display"); //temp val
-  const [fullName, setFullName] = useState("fullname"); //temp val
+  const [displayName, setDisplayName] = useState("");
+  const [fullName, setFullName] = useState("");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
-
-  const navigate = useNavigate();
 
   /**
    * Handles the create account button functionality.
@@ -36,6 +40,7 @@ export default function CreateAccount() {
   const handleClick = async () => {
     try {
       let user = await handleCreateAccount();
+      //updateEnvironment("user", user);
       //console.log(user);
       var residentData = {
         uid: user.uid,
@@ -48,8 +53,10 @@ export default function CreateAccount() {
       //Add reference to newly created document to resident object and document
       let reference = await createFirebaseResident(user.uid, residentData);
       residentData.reference = reference;
+      //updateEnvironment("user", residentData);
 
       window.location.href = "/account";
+      //navigate("/account");
     } catch (error) {
       if (error.message == "Firebase: Error (auth/email-already-in-use).") {
         console.error("Email already in use.");

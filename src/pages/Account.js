@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "../css/Account.css";
 import Resident from "../classes/resident";
 import {
@@ -8,8 +8,14 @@ import {
   updateFirebaseResident,
 } from "../services/residentService";
 import SignOutButton from "../components/auth/SignOutButton";
+import { useNavigate } from "react-router-dom";
+import EnvironmentContext from "../App";
 export default function Account(props) {
   //TODO: Tidy TF up
+
+  // const { environment, updateEnvironment } = useContext(EnvironmentContext);
+  // const navigate = useNavigate();
+
   const [isEditActive, setIsEditActive] = useState(false);
   const [resident, setResident] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
