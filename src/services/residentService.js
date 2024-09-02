@@ -32,6 +32,26 @@ export async function fetchResident(uid) {
   }
 }
 
+/**
+ *
+ * @param {*} data
+ */
+export async function generateResident(uid) {
+  let data = await fetchResident(uid);
+
+  let resident = new Resident(
+    data.displayName,
+    data.emailAddress,
+    data.fullName,
+    data.uid,
+    data.photoURL
+  );
+  resident.reference = data.reference;
+  resident.residenceReference = data.residenceReference;
+
+  return resident;
+}
+
 //Temporary, only using 4 params
 export function generateBaseResident(data) {
   //console.log(data);

@@ -14,7 +14,7 @@ import {
 import EnvironmentContext from "../../App";
 import { useContext } from "react";
 
-export default function CreateAccount() {
+export default function CreateAccount(props) {
   // const { updateEnvironment } = useContext(EnvironmentContext);
   // const navigate = useNavigate();
 
@@ -54,6 +54,8 @@ export default function CreateAccount() {
       let reference = await createFirebaseResident(user.uid, residentData);
       residentData.reference = reference;
       //updateEnvironment("user", residentData);
+
+      props.updateEnvironment("resident", residentData);
 
       window.location.href = "/account";
       //navigate("/account");

@@ -48,7 +48,9 @@ export default function Account(props) {
         setDisplayName(residentData.displayName);
         setPhotoURL(residentData.photoURL);
         let generatedResident = generateBaseResident(residentData);
-        console.log(generatedResident);
+        //console.log(generatedResident);
+
+        props.updateEnvironment("resident", generatedResident);
 
         setResident(generatedResident);
       }
@@ -71,10 +73,13 @@ export default function Account(props) {
     if (!isSaving) {
       setIsSaving(true);
       let saveData = { fullName: fullName, displayName: displayName };
-      resident.fullName = fullName;
-      resident.displayName = displayName;
+
       try {
         await updateFirebaseResident(resident.uid, saveData);
+        resident.fullName = fullName;
+        resident.displayName = displayName;
+        props.environment.resident.fullName = fullName;
+        props.environment.resident.displayName = displayName;
       } catch (error) {
         console.error("ERROR while saving data: ", error);
       }

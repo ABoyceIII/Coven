@@ -24,6 +24,7 @@ function App() {
   }, [user]);
 
   const updateEnvironment = (field, value) => {
+    console.log("updating environment");
     setEnvironment((prevEnv) => ({ ...prevEnv, [field]: value }));
   };
 
@@ -35,9 +36,26 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/create" element={<CreateAccount />} />
+          <Route
+            path="/create"
+            element={
+              <CreateAccount
+                environment={environment}
+                updateEnvironment={updateEnvironment}
+              />
+            }
+          />
           <Route path="/account" element={<Account user={user} />} />
-          <Route path="/dashboard" element={<Dashboard user={user} />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                user={user}
+                environment={environment}
+                updateEnvironment={updateEnvironment}
+              />
+            }
+          />
           <Route
             path="/create-residence"
             element={<CreateResidence user={user} />}
