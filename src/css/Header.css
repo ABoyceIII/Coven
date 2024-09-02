@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+
+.Header {
+  width: 100%;
+  height: 10vh;
+  background-color: #0f3887;
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    height: 90%;
+    border-radius: 50%;
+    align-self: center;
+    padding-left: 10px;
+  }
+  img:hover {
+    filter: brightness(90%);
+    cursor: pointer; /* Changes cursor to the clicky one */
+  }
+
+  img:active {
+    filter: brightness(85%);
+    cursor: pointer; /* Changes cursor to the clicky one */
+  }
+
+  h1 {
+    color: white;
+    font-family: "Outfit", sans-serif;
+    align-self: flex-end;
+  }
+
+  .SignOutButton {
+    width: 27.5vh; /* Proportional width */
+    height: 6vh; /* Proportional height */
+    border-radius: 40px;
+    background-color: white;
+    color: black;
+    font-family: "Outfit", sans-serif;
+    font-weight: 600; /* SemiBold */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 10px;
+    align-self: center;
+    font-size: 3.5vh;
+  }
+}

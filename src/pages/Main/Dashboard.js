@@ -5,6 +5,7 @@ import {
   fetchResident,
   generateResident,
 } from "../../services/residentService";
+import Header from "../../components/main/Header";
 export default function Dashboard(props) {
   //const { environment } = useContext(EnvironmentContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +49,10 @@ export default function Dashboard(props) {
           alt=""
         />
       ) : (
-        <div className="Dashboard"></div>
+        <div>
+          <Header environment={props.environment} />
+          <div className="Dashboard">hello</div>
+        </div>
       )}
     </div>
   );
