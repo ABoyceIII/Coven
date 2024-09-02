@@ -10,12 +10,6 @@ import CreateResidence from "./pages/CreateResidence.js";
 import Dashboard from "./pages/Main/Dashboard.js";
 function App() {
   const user = useAuthentication();
-  const [environment, setEnvironment] = useState();
-
-  //Whenever user updates, refresh our environment variable.
-  useEffect(() => {
-    //console.log("Refreshing Environment");
-  }, [user]);
 
   return (
     <div className="App">
