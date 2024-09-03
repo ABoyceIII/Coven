@@ -6,33 +6,34 @@ import {
   ListTodo,
   MessageSquareMore,
 } from "lucide-react";
+import "../../css/Navbar.css";
 
 export default function Navbar(props) {
   return (
     <div className="Navbar">
-      <div className="DashboardButton">
+      <div className="NavbarButton">
         <LayoutDashboard
           onClick={() => (window.location.href = "/dashboard")}
         />
       </div>
 
-      <div className="ManagementButton">
+      <div className="NavbarButton">
         <House onClick={() => (window.location.href = "/dashboard")} />
       </div>
 
-      <div className="PrivacyButton">
+      <div className="NavbarButton">
         <Eye onClick={() => (window.location.href = "/dashboard")} />
       </div>
 
-      <div className="CalendarButton">
+      <div className="NavbarButton">
         <CalendarDays onClick={() => (window.location.href = "/dashboard")} />
       </div>
 
-      <div className="TasksButton">
+      <div className="NavbarButton">
         <ListTodo onClick={() => (window.location.href = "/dashboard")} />
       </div>
 
-      <div className="Chatbutton">
+      <div className="NavbarButton">
         <MessageSquareMore
           onClick={() => (window.location.href = "/dashboard")}
         />

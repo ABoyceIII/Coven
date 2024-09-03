@@ -7,6 +7,8 @@ import {
 } from "../../services/residentService";
 import Header from "../../components/main/Header";
 import Navbar from "../../components/main/Navbar";
+import PageFrame from "../../components/main/PageFrame";
+import "../../css/Dashboard.css";
 export default function Dashboard(props) {
   //const { environment } = useContext(EnvironmentContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,8 +44,16 @@ export default function Dashboard(props) {
       loadResident();
     }
   }, [props]);
+
+  const dashboardContent = (
+    <div className="PageContent" id="DashboardContent">
+      <h1>Dashboard</h1>
+      <p>hello</p>
+    </div>
+  );
+
   return (
-    <div className="DashboardPage">
+    <div className="AppPage" id="DashboardPage">
       {isLoading ? (
         <img
           src={require("../../assets/loading/loading-transparent.gif")}
@@ -51,9 +61,10 @@ export default function Dashboard(props) {
         />
       ) : (
         <div>
-          <Header environment={props.environment} />
-          <Navbar environment={props.environment} />
-          <div className="Dashboard">hello</div>
+          <PageFrame
+            environment={props.environment}
+            content={dashboardContent}
+          />
         </div>
       )}
     </div>

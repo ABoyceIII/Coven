@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
 
 .Header {
-  width: 100%;
-  height: 8.5vh;
+  z-index: 15; /* Renders on top of everything */
+
   background-color: #0f3887;
   display: flex;
   justify-content: space-between;
