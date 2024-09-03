@@ -4,3 +4,7 @@
   width: 100vw;
   height: 100vh;
 }
+.PageContent {
+  margin-top: 15px;
+  margin-left: 15px;
+}
