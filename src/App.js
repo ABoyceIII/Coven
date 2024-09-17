@@ -45,7 +45,12 @@ function App() {
               />
             }
           />
-          <Route path="/account" element={<Account user={user} />} />
+          <Route
+            path="/account"
+            element={
+              <Account user={user} updateEnvironment={updateEnvironment} />
+            }
+          />
           <Route
             path="/dashboard"
             element={
